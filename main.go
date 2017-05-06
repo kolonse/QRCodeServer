@@ -6,7 +6,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"flag"
+	"io"
 	"net/http"
+	"os"
 
 	"github.com/kolonse/KolonseWeb"
 	"github.com/kolonse/KolonseWeb/HttpLib"
@@ -94,19 +96,23 @@ func Active(req *HttpLib.Request, res *HttpLib.Response, next Type.Next) {
 	KolonseWeb.BeeLogger.Info("%s %s %s", req.RemoteAddr, req.URL.String(), "success")
 }
 
-func Help(req *HttpLib.Request, res *HttpLib.Response, next Type.Next) {
+func Readme(req *HttpLib.Request, res *HttpLib.Response, next Type.Next) {
 	defer req.Body.Close()
-	res.Write([]byte("usage:url?content=<string>&size=<int>&bgcolor=<#int>&forecolor=<#int>&logo=<url>"))
+	f, _ := os.Open("./readme.html")
+	defer f.Close()
+	io.Copy(res.ResponseWriter, f)
 }
 
 func main() {
 	flag.Parse()
 	KolonseWeb.DefaultApp.Get("/qrcode", QRCode)
 	KolonseWeb.DefaultApp.Get("/active", Active)
-	KolonseWeb.DefaultApp.Get("/", Help)
+	KolonseWeb.DefaultApp.Get("/", Readme)
+	KolonseWeb.DefaultApp.Get("/help", Readme)
+	KolonseWeb.DefaultApp.Get("/readme", Readme)
 	KolonseWeb.DefaultApp.Post("/qrcode", QRCode)
 	KolonseWeb.DefaultApp.Post("/active", Active)
-	KolonseWeb.DefaultApp.Post("/", Help)
+	KolonseWeb.DefaultApp.Post("/", Readme)
 	KolonseWeb.DefaultApp.Listen(*ip, *port)
 }
 
