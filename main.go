@@ -6,9 +6,11 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/kolonse/KolonseWeb"
 	"github.com/kolonse/KolonseWeb/HttpLib"
@@ -103,16 +105,34 @@ func Readme(req *HttpLib.Request, res *HttpLib.Response, next Type.Next) {
 	io.Copy(res.ResponseWriter, f)
 }
 
+func Version(req *HttpLib.Request, res *HttpLib.Response, next Type.Next) {
+	defer req.Body.Close()
+	res.End("Version:" + VERSION + " Build:" + strconv.Itoa(BUILD))
+}
+
 func main() {
+	if len(os.Args) > 1 && (os.Args[1] == "-v" || os.Args[1] == "version") {
+		fmt.Printf("Version:%s Build:%d\n", VERSION, BUILD)
+		os.Exit(0)
+		return
+	}
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
+		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "  -v,version\n")
+		fmt.Fprintf(os.Stderr, "\t显示当前版本号\n")
+	}
 	flag.Parse()
 	KolonseWeb.DefaultApp.Get("/qrcode", QRCode)
 	KolonseWeb.DefaultApp.Get("/active", Active)
 	KolonseWeb.DefaultApp.Get("/", Readme)
 	KolonseWeb.DefaultApp.Get("/help", Readme)
 	KolonseWeb.DefaultApp.Get("/readme", Readme)
+	KolonseWeb.DefaultApp.Get("/v", Version)
 	KolonseWeb.DefaultApp.Post("/qrcode", QRCode)
 	KolonseWeb.DefaultApp.Post("/active", Active)
 	KolonseWeb.DefaultApp.Post("/", Readme)
+	KolonseWeb.DefaultApp.Post("/v", Version)
 	KolonseWeb.DefaultApp.Listen(*ip, *port)
 }
 
