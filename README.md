@@ -1,10 +1,10 @@
 # 二维码服务说明 #
-目前二维码服务属性房卡捕鱼项目,域名:qrcode.youdianle.com.cn
+目前二维码服务属性房卡捕鱼项目,域名:qrcode.test.com.cn
 
 **1.服务启动参数介绍**
 >  -a string
 >  
->        -a=<url> 连接性活码地址url (default "http://qrcode.youdianle.com.cn/active")
+>        -a=<url> 连接性活码地址url (default "http://qrcode.test.com.cn/active")
 >
 >  -d string
 >  
@@ -30,52 +30,52 @@
 **2.服务使用介绍**
 
 服务请求地址
->     http://qrcode.youdianle.com.cn/qrcode
+>     http://qrcode.test.com.cn/qrcode
 
 请求参数:
 >     content(必须) 要进行生成二维码的内容,如果是带有参数的url时需要对这个url进行 urlencode
->     例如:http://qrcode.youdianle.com.cn/qrcode?content=http://xxx?a=1
+>     例如:http://qrcode.test.com.cn/qrcode?content=http://xxx?a=1
 >     其中 content 需要修改为 http%3a%2f%2fxxx%3fa%3d1,对应二维码如下:
-![content 测试二维码](http://qrcode.youdianle.com.cn/qrcode?content=http%3a%2f%2fxxx%3fa%3d1)
+![content 测试二维码](http://qrcode.test.com.cn/qrcode?content=http%3a%2f%2fxxx%3fa%3d1)
 
 >     size(默认 256) 生成二维码的图片大小,例如
-![http://qrcode.youdianle.com.cn/qrcode?content=test&size=70](http://qrcode.youdianle.com.cn/qrcode?content=test&size=70)    
+![http://qrcode.test.com.cn/qrcode?content=test&size=70](http://qrcode.test.com.cn/qrcode?content=test&size=70)    
  
 >     bgcolor(默认 纯白 ffffff) 背景颜色值,是16进制rgb值
->     例如:http://qrcode.youdianle.com.cn/qrcode?content=test&bgcolor=00ff00
+>     例如:http://qrcode.test.com.cn/qrcode?content=test&bgcolor=00ff00
 
-![DIY背景颜色二维码](http://qrcode.youdianle.com.cn/qrcode?content=test&bgcolor=00ff00)
+![DIY背景颜色二维码](http://qrcode.test.com.cn/qrcode?content=test&bgcolor=00ff00)
 
 >     forecolor(默认 纯黑 000000) 前景颜色值,是16进制rgb值
->     例如:http://qrcode.youdianle.com.cn/qrcode?content=test&forecolor=00ff00
+>     例如:http://qrcode.test.com.cn/qrcode?content=test&forecolor=00ff00
 
-![DIY背景颜色二维码](http://qrcode.youdianle.com.cn/qrcode?content=test&forecolor=00ff00)
+![DIY背景颜色二维码](http://qrcode.test.com.cn/qrcode?content=test&forecolor=00ff00)
 
 >     logo(默认 无) 插入二维码中间的图片url
 >     特别注意,在设计二维码时,logo的大小和二维码的大小比例要提前设定好.
->     例如：http://qrcode.youdianle.com.cn/qrcode?content=test&logo=http://fk.youdianle.com.cn/logo.png
+>     例如：http://qrcode.test.com.cn/qrcode?content=test&logo=http://fk.test.com.cn/logo.png
 
-![DIY背景颜色二维码](http://qrcode.youdianle.com.cn/qrcode?content=test&logo=http://fk.youdianle.com.cn/logo.png)
+![DIY背景颜色二维码](http://qrcode.test.com.cn/qrcode?content=test&logo=http://fk.test.com.cn/logo.png)
 
 >     bdmaxsize(默认 无)表示二维码周围的空白边宽大小,如果设置该值,那么生成的二维码就不一定是 size 属性大小,而是 bdmaxsize + (size - size % 43) / 43.
->     例如:http://qrcode.youdianle.com.cn/qrcode?content=test&bgcolor=00ff00&bgmaxsize=5
+>     例如:http://qrcode.test.com.cn/qrcode?content=test&bgcolor=00ff00&bgmaxsize=5
 
-![DIY背景颜色二维码](http://qrcode.youdianle.com.cn/qrcode?content=test&bgcolor=00ffff&bdmaxsize=3)
+![DIY背景颜色二维码](http://qrcode.test.com.cn/qrcode?content=test&bgcolor=00ffff&bdmaxsize=3)
 
 >     shortest(默认 false,有效值只有 true)  表示是否生成最简二维码,主要针对于 content 比较长的情况,如果content比较长那么生成二维码的比较复杂,当二维码缩小时会很难扫描
->     例如：content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect
+>     例如：content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect
 >     未配置 shortest 前:
-![http://qrcode.youdianle.com.cn/qrcode?forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect](http://qrcode.youdianle.com.cn/qrcode?forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect)
+![http://qrcode.test.com.cn/qrcode?forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect](http://qrcode.test.com.cn/qrcode?forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect)
 
 >     配置 shortest=true后
-![http://qrcode.youdianle.com.cn/qrcode?shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect](http://qrcode.youdianle.com.cn/qrcode?shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect)
+![http://qrcode.test.com.cn/qrcode?shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect](http://qrcode.test.com.cn/qrcode?shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect)
 
-扫描二维码后两个的内容是不一样的,第二个二维码的内容是：http://qrcode.youdianle.com.cn/active?k=G, 当我们访问这个连接后的内容就变成了 content的内容.其中 http://qrcode.youdianle.com.cn/active 可以通过服务启动时-a参数进行定制,但路径必须是/active
+扫描二维码后两个的内容是不一样的,第二个二维码的内容是：http://qrcode.test.com.cn/active?k=G, 当我们访问这个连接后的内容就变成了 content的内容.其中 http://qrcode.test.com.cn/active 可以通过服务启动时-a参数进行定制,但路径必须是/active
 
 >     redirect(默认false,有效值只有 true) 前提必须 shortest=true时才有效,表示生成活码后的连接进行访问后是否对 content内容进行重定向.
 >     例如将下面的活码配置redirect=true后,微信扫描应该是房卡捕鱼的付费页面
 
-![http://qrcode.youdianle.com.cn/qrcode?redirect=true&shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect](http://qrcode.youdianle.com.cn/qrcode?redirect=true&shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.youdianle.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay_test%23wechat_redirect)
+![http://qrcode.test.com.cn/qrcode?redirect=true&shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay%23wechat_redirect](http://qrcode.test.com.cn/qrcode?redirect=true&shortest=true&forecolor=076FC1&bdmaxsize=2&amp;content=https%3a%2f%2fopen.weixin.qq.com%2fconnect%2foauth2%2fauthorize%3fappid%3dwx2b54cdf28427315e%26redirect_uri%3dhttp%253a%252f%252fwxpublic.test.com.cn%252fpay%252fjsapi%252fdo%253fpayAppId%253dfff0b507e9344b615213b0d8c457a956%26response_type%3dcode%26scope%3dsnsapi_userinfo%26state%3dwxpay_test%23wechat_redirect)
 
 
 
